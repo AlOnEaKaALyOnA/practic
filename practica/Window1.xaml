@@ -1,0 +1,53 @@
+﻿<Window x:Class="practica.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:practica"
+        mc:Ignorable="d"
+        Title="Window1" Height="400" Width="510">
+    <Grid>
+        <DataGrid x:Name="dtg_Dogovor" d:ItemsSource="{d:SampleData ItemCount=5}" AutoGenerateColumns="False" Margin="0,0,0,252">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID_Dogovor" 
+                                 Binding="{Binding Path=ID_Dogovor}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID_Sotrydnik" 
+                                 Binding="{Binding Path=ID_Sotrydnik}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID_klient" 
+                                 Binding="{Binding Path=ID_Klient}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ID_Tyra" 
+                                 Binding="{Binding Path=ID_Tyra}"></DataGridTextColumn>
+                <DataGridTextColumn Header="DataZaklycheniya" 
+                                 Binding="{Binding Path=DataZaklycheniya,StringFormat={}{0:dd.MM.yy}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="DataDeistvya"
+                                 Binding="{Binding Path=DataDeistvya,StringFormat={}{0:dd.MM.yy}}"></DataGridTextColumn>
+                <DataGridTextColumn Header="SpisokYslyg" 
+                                 Binding="{Binding Path=SpisokYslyg}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_add" Content="Добавить" HorizontalAlignment="Left" Margin="10,150,0,0" VerticalAlignment="Top" Height="55" Width="111" Click="btn_add_Click"/>
+        <Button x:Name="btn_delete" Content="Удалить" HorizontalAlignment="Left" Margin="10,217,0,0" VerticalAlignment="Top" Height="55" Width="112" Click="btn_delete_Click">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.546"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="btn_red" Content="Изменить" HorizontalAlignment="Left" Margin="10,285,0,0" VerticalAlignment="Top" Width="111" Height="55" Click="btn_red_Click"/>
+        <Label x:Name="ID" Content="Список услуг" HorizontalAlignment="Left" Margin="303,291,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_Tyra" HorizontalAlignment="Left" Margin="136,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="ID Сотрудник" HorizontalAlignment="Left" Margin="155,156,0,0" VerticalAlignment="Top"/>
+        <Label Content="ID Клиент" HorizontalAlignment="Left" Margin="309,156,0,0" VerticalAlignment="Top"/>
+        <Label Content="ID Тура" HorizontalAlignment="Left" Margin="162,223,0,0" VerticalAlignment="Top"/>
+        <Label Content="Дата заключения" HorizontalAlignment="Left" Margin="291,223,0,0" VerticalAlignment="Top"/>
+        <Label Content="Дата действия" HorizontalAlignment="Left" Margin="153,291,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tb_DataZaklycheniya" HorizontalAlignment="Left" Margin="284,254,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_DataDeistvya" HorizontalAlignment="Left" Margin="136,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_SpisokYslyg" HorizontalAlignment="Left" Margin="284,322,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_Sotrydnik" HorizontalAlignment="Left" Margin="136,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tb_Klient" HorizontalAlignment="Left" Margin="284,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+    </Grid>
+</Window>

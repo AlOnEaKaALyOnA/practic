@@ -1,0 +1,873 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BronirovanieExkyrsii">
+          <Key>
+            <PropertyRef Name="ID_Broni" />
+          </Key>
+          <Property Name="ID_Broni" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Klient" Type="int" />
+          <Property Name="ID_Excyrsii" Type="int" />
+          <Property Name="DataBroni" Type="date" />
+        </EntityType>
+        <EntityType Name="BronirovanieTransporta">
+          <Key>
+            <PropertyRef Name="ID_BroniTransporta" />
+          </Key>
+          <Property Name="ID_BroniTransporta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Klient" Type="int" />
+          <Property Name="ID_Transport" Type="int" />
+          <Property Name="DataArendy" Type="date" />
+        </EntityType>
+        <EntityType Name="Dogovor">
+          <Key>
+            <PropertyRef Name="ID_Dogovor" />
+          </Key>
+          <Property Name="ID_Dogovor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Sotrydnik" Type="int" />
+          <Property Name="ID_Klient" Type="int" />
+          <Property Name="ID_Tyra" Type="int" />
+          <Property Name="DataZaklycheniya" Type="date" />
+          <Property Name="DataDeistvtya" Type="date" />
+          <Property Name="SpisokYslyg" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Dolshnost">
+          <Key>
+            <PropertyRef Name="ID_Dolshost" />
+          </Key>
+          <Property Name="ID_Dolshost" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Sotrydnik" Type="int" />
+          <Property Name="NazvanieDolshosti" Type="nvarchar" MaxLength="40" />
+          <Property Name="Zarplata" Type="money" />
+        </EntityType>
+        <EntityType Name="Exskyrsia">
+          <Key>
+            <PropertyRef Name="ID_Excyrsii" />
+          </Key>
+          <Property Name="ID_Excyrsii" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="20" />
+          <Property Name="Opisanie" Type="nvarchar" MaxLength="100" />
+          <Property Name="Stoimost" Type="money" />
+          <Property Name="DataExskyrsii" Type="date" />
+          <Property Name="Dlitelnost" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Gorod">
+          <Key>
+            <PropertyRef Name="ID_Gorod" />
+          </Key>
+          <Property Name="ID_Gorod" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Strana" Type="int" />
+          <Property Name="NazvanieGoroda" Type="nvarchar" MaxLength="30" />
+          <Property Name="OpisanieGoroda" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="ID_Klient" />
+          </Key>
+          <Property Name="ID_Klient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familiya" Type="nvarchar" MaxLength="20" />
+          <Property Name="Imya" Type="nvarchar" MaxLength="20" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="20" />
+          <Property Name="DataRozdeniya" Type="date" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="20" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="17" />
+          <Property Name="PassportnyeDannye" Type="nvarchar" MaxLength="11" />
+          <Property Name="Viza" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="Otel">
+          <Key>
+            <PropertyRef Name="ID_Otel" />
+          </Key>
+          <Property Name="ID_Otel" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Tyra" Type="int" />
+          <Property Name="NazvanieOtelya" Type="nvarchar" MaxLength="50" />
+          <Property Name="KolVoZvezd" Type="int" />
+          <Property Name="OpisanieOtelya" Type="nvarchar" MaxLength="200" />
+          <Property Name="ChenaZaNoch" Type="money" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Sotrydnik">
+          <Key>
+            <PropertyRef Name="ID_Sotrydnik" />
+          </Key>
+          <Property Name="ID_Sotrydnik" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familiya" Type="nvarchar" MaxLength="20" />
+          <Property Name="Imya" Type="nvarchar" MaxLength="20" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="20" />
+          <Property Name="DataRozdeniya" Type="date" />
+          <Property Name="Telefon" Type="nvarchar" MaxLength="17" />
+          <Property Name="PassportnyeDannye" Type="nvarchar" MaxLength="11" />
+          <Property Name="DataPrinyatiaNaRaboty" Type="date" />
+        </EntityType>
+        <EntityType Name="Strana">
+          <Key>
+            <PropertyRef Name="ID_Strana" />
+          </Key>
+          <Property Name="ID_Strana" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NazvanieStrany" Type="nvarchar" MaxLength="20" />
+          <Property Name="VizovyeReshim" Type="nvarchar" MaxLength="11" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Transport">
+          <Key>
+            <PropertyRef Name="ID_Transport" />
+          </Key>
+          <Property Name="ID_Transport" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TipTransporta" Type="nvarchar" MaxLength="20" />
+          <Property Name="KolVoMest" Type="int" />
+          <Property Name="StoimostArendy" Type="money" />
+        </EntityType>
+        <EntityType Name="Tyr">
+          <Key>
+            <PropertyRef Name="ID_Tyra" />
+          </Key>
+          <Property Name="ID_Tyra" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_Sotrydnik" Type="int" />
+          <Property Name="ID_Strana" Type="int" />
+          <Property Name="Nazvanie" Type="nvarchar" MaxLength="50" />
+          <Property Name="DataOkonchaniya" Type="date" />
+          <Property Name="DataNachala" Type="date" />
+          <Property Name="Stoimost" Type="money" />
+          <Property Name="ProgrammaTyra" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_BronirovanieExkyrsii_Exskyrsia">
+          <End Role="Exskyrsia" Type="Self.Exskyrsia" Multiplicity="0..1" />
+          <End Role="BronirovanieExkyrsii" Type="Self.BronirovanieExkyrsii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exskyrsia">
+              <PropertyRef Name="ID_Excyrsii" />
+            </Principal>
+            <Dependent Role="BronirovanieExkyrsii">
+              <PropertyRef Name="ID_Excyrsii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BronirovanieExkyrsii_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="BronirovanieExkyrsii" Type="Self.BronirovanieExkyrsii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="ID_Klient" />
+            </Principal>
+            <Dependent Role="BronirovanieExkyrsii">
+              <PropertyRef Name="ID_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BronirovanieTransporta_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="BronirovanieTransporta" Type="Self.BronirovanieTransporta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="ID_Klient" />
+            </Principal>
+            <Dependent Role="BronirovanieTransporta">
+              <PropertyRef Name="ID_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BronirovanieTransporta_Transport">
+          <End Role="Transport" Type="Self.Transport" Multiplicity="0..1" />
+          <End Role="BronirovanieTransporta" Type="Self.BronirovanieTransporta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="ID_Transport" />
+            </Principal>
+            <Dependent Role="BronirovanieTransporta">
+              <PropertyRef Name="ID_Transport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="ID_Klient" />
+            </Principal>
+            <Dependent Role="Dogovor">
+              <PropertyRef Name="ID_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_Sotrydnik">
+          <End Role="Sotrydnik" Type="Self.Sotrydnik" Multiplicity="0..1" />
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrydnik">
+              <PropertyRef Name="ID_Sotrydnik" />
+            </Principal>
+            <Dependent Role="Dogovor">
+              <PropertyRef Name="ID_Sotrydnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_Tyr">
+          <End Role="Tyr" Type="Self.Tyr" Multiplicity="0..1" />
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tyr">
+              <PropertyRef Name="ID_Tyra" />
+            </Principal>
+            <Dependent Role="Dogovor">
+              <PropertyRef Name="ID_Tyra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dolshnost_Sotrydnik">
+          <End Role="Sotrydnik" Type="Self.Sotrydnik" Multiplicity="0..1" />
+          <End Role="Dolshnost" Type="Self.Dolshnost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrydnik">
+              <PropertyRef Name="ID_Sotrydnik" />
+            </Principal>
+            <Dependent Role="Dolshnost">
+              <PropertyRef Name="ID_Sotrydnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorod_Strana">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="0..1" />
+          <End Role="Gorod" Type="Self.Gorod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="ID_Strana" />
+            </Principal>
+            <Dependent Role="Gorod">
+              <PropertyRef Name="ID_Strana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otel_Tyr">
+          <End Role="Tyr" Type="Self.Tyr" Multiplicity="0..1" />
+          <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tyr">
+              <PropertyRef Name="ID_Tyra" />
+            </Principal>
+            <Dependent Role="Otel">
+              <PropertyRef Name="ID_Tyra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tyr_Strana">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="0..1" />
+          <End Role="Tyr" Type="Self.Tyr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="ID_Strana" />
+            </Principal>
+            <Dependent Role="Tyr">
+              <PropertyRef Name="ID_Strana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище ModelContainer">
+          <EntitySet Name="BronirovanieExkyrsii" EntityType="Self.BronirovanieExkyrsii" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BronirovanieTransporta" EntityType="Self.BronirovanieTransporta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dogovor" EntityType="Self.Dogovor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Dolshnost" EntityType="Self.Dolshnost" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Exskyrsia" EntityType="Self.Exskyrsia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gorod" EntityType="Self.Gorod" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Otel" EntityType="Self.Otel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sotrydnik" EntityType="Self.Sotrydnik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Strana" EntityType="Self.Strana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transport" EntityType="Self.Transport" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tyr" EntityType="Self.Tyr" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BronirovanieExkyrsii_Exskyrsia" Association="Self.FK_BronirovanieExkyrsii_Exskyrsia">
+            <End Role="Exskyrsia" EntitySet="Exskyrsia" />
+            <End Role="BronirovanieExkyrsii" EntitySet="BronirovanieExkyrsii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BronirovanieExkyrsii_Klient" Association="Self.FK_BronirovanieExkyrsii_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="BronirovanieExkyrsii" EntitySet="BronirovanieExkyrsii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BronirovanieTransporta_Klient" Association="Self.FK_BronirovanieTransporta_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="BronirovanieTransporta" EntitySet="BronirovanieTransporta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BronirovanieTransporta_Transport" Association="Self.FK_BronirovanieTransporta_Transport">
+            <End Role="Transport" EntitySet="Transport" />
+            <End Role="BronirovanieTransporta" EntitySet="BronirovanieTransporta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_Klient" Association="Self.FK_Dogovor_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Dogovor" EntitySet="Dogovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_Sotrydnik" Association="Self.FK_Dogovor_Sotrydnik">
+            <End Role="Sotrydnik" EntitySet="Sotrydnik" />
+            <End Role="Dogovor" EntitySet="Dogovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_Tyr" Association="Self.FK_Dogovor_Tyr">
+            <End Role="Tyr" EntitySet="Tyr" />
+            <End Role="Dogovor" EntitySet="Dogovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dolshnost_Sotrydnik" Association="Self.FK_Dolshnost_Sotrydnik">
+            <End Role="Sotrydnik" EntitySet="Sotrydnik" />
+            <End Role="Dolshnost" EntitySet="Dolshnost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorod_Strana" Association="Self.FK_Gorod_Strana">
+            <End Role="Strana" EntitySet="Strana" />
+            <End Role="Gorod" EntitySet="Gorod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otel_Tyr" Association="Self.FK_Otel_Tyr">
+            <End Role="Tyr" EntitySet="Tyr" />
+            <End Role="Otel" EntitySet="Otel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tyr_Strana" Association="Self.FK_Tyr_Strana">
+            <End Role="Strana" EntitySet="Strana" />
+            <End Role="Tyr" EntitySet="Tyr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BronirovanieExkyrsii">
+          <Key>
+            <PropertyRef Name="ID_Broni" />
+          </Key>
+          <Property Name="ID_Broni" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Klient" Type="Int32" />
+          <Property Name="ID_Excyrsii" Type="Int32" />
+          <Property Name="DataBroni" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Exskyrsia" Relationship="Self.FK_BronirovanieExkyrsii_Exskyrsia" FromRole="BronirovanieExkyrsii" ToRole="Exskyrsia" />
+          <NavigationProperty Name="Klient" Relationship="Self.FK_BronirovanieExkyrsii_Klient" FromRole="BronirovanieExkyrsii" ToRole="Klient" />
+        </EntityType>
+        <EntityType Name="BronirovanieTransporta">
+          <Key>
+            <PropertyRef Name="ID_BroniTransporta" />
+          </Key>
+          <Property Name="ID_BroniTransporta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Klient" Type="Int32" />
+          <Property Name="ID_Transport" Type="Int32" />
+          <Property Name="DataArendy" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Klient" Relationship="Self.FK_BronirovanieTransporta_Klient" FromRole="BronirovanieTransporta" ToRole="Klient" />
+          <NavigationProperty Name="Transport" Relationship="Self.FK_BronirovanieTransporta_Transport" FromRole="BronirovanieTransporta" ToRole="Transport" />
+        </EntityType>
+        <EntityType Name="Dogovor">
+          <Key>
+            <PropertyRef Name="ID_Dogovor" />
+          </Key>
+          <Property Name="ID_Dogovor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Sotrydnik" Type="Int32" />
+          <Property Name="ID_Klient" Type="Int32" />
+          <Property Name="ID_Tyra" Type="Int32" />
+          <Property Name="DataZaklycheniya" Type="DateTime" Precision="0" />
+          <Property Name="DataDeistvtya" Type="DateTime" Precision="0" />
+          <Property Name="SpisokYslyg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Klient" Relationship="Self.FK_Dogovor_Klient" FromRole="Dogovor" ToRole="Klient" />
+          <NavigationProperty Name="Sotrydnik" Relationship="Self.FK_Dogovor_Sotrydnik" FromRole="Dogovor" ToRole="Sotrydnik" />
+          <NavigationProperty Name="Tyr" Relationship="Self.FK_Dogovor_Tyr" FromRole="Dogovor" ToRole="Tyr" />
+        </EntityType>
+        <EntityType Name="Dolshnost">
+          <Key>
+            <PropertyRef Name="ID_Dolshost" />
+          </Key>
+          <Property Name="ID_Dolshost" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Sotrydnik" Type="Int32" />
+          <Property Name="NazvanieDolshosti" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="Zarplata" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="Sotrydnik" Relationship="Self.FK_Dolshnost_Sotrydnik" FromRole="Dolshnost" ToRole="Sotrydnik" />
+        </EntityType>
+        <EntityType Name="Exskyrsia">
+          <Key>
+            <PropertyRef Name="ID_Excyrsii" />
+          </Key>
+          <Property Name="ID_Excyrsii" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazvanie" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Opisanie" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Stoimost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DataExskyrsii" Type="DateTime" Precision="0" />
+          <Property Name="Dlitelnost" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BronirovanieExkyrsii" Relationship="Self.FK_BronirovanieExkyrsii_Exskyrsia" FromRole="Exskyrsia" ToRole="BronirovanieExkyrsii" />
+        </EntityType>
+        <EntityType Name="Gorod">
+          <Key>
+            <PropertyRef Name="ID_Gorod" />
+          </Key>
+          <Property Name="ID_Gorod" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Strana" Type="Int32" />
+          <Property Name="NazvanieGoroda" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="OpisanieGoroda" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Strana" Relationship="Self.FK_Gorod_Strana" FromRole="Gorod" ToRole="Strana" />
+        </EntityType>
+        <EntityType Name="Klient">
+          <Key>
+            <PropertyRef Name="ID_Klient" />
+          </Key>
+          <Property Name="ID_Klient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familiya" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Imya" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Otchestvo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DataRozdeniya" Type="DateTime" Precision="0" />
+          <Property Name="Adress" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Telefon" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="PassportnyeDannye" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="Viza" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BronirovanieExkyrsii" Relationship="Self.FK_BronirovanieExkyrsii_Klient" FromRole="Klient" ToRole="BronirovanieExkyrsii" />
+          <NavigationProperty Name="BronirovanieTransporta" Relationship="Self.FK_BronirovanieTransporta_Klient" FromRole="Klient" ToRole="BronirovanieTransporta" />
+          <NavigationProperty Name="Dogovor" Relationship="Self.FK_Dogovor_Klient" FromRole="Klient" ToRole="Dogovor" />
+        </EntityType>
+        <EntityType Name="Otel">
+          <Key>
+            <PropertyRef Name="ID_Otel" />
+          </Key>
+          <Property Name="ID_Otel" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Tyra" Type="Int32" />
+          <Property Name="NazvanieOtelya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KolVoZvezd" Type="Int32" />
+          <Property Name="OpisanieOtelya" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="ChenaZaNoch" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Adress" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tyr" Relationship="Self.FK_Otel_Tyr" FromRole="Otel" ToRole="Tyr" />
+        </EntityType>
+        <EntityType Name="Sotrydnik">
+          <Key>
+            <PropertyRef Name="ID_Sotrydnik" />
+          </Key>
+          <Property Name="ID_Sotrydnik" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familiya" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Imya" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Otchestvo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DataRozdeniya" Type="DateTime" Precision="0" />
+          <Property Name="Telefon" Type="String" MaxLength="17" FixedLength="false" Unicode="true" />
+          <Property Name="PassportnyeDannye" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <Property Name="DataPrinyatiaNaRaboty" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Dogovor" Relationship="Self.FK_Dogovor_Sotrydnik" FromRole="Sotrydnik" ToRole="Dogovor" />
+          <NavigationProperty Name="Dolshnost" Relationship="Self.FK_Dolshnost_Sotrydnik" FromRole="Sotrydnik" ToRole="Dolshnost" />
+        </EntityType>
+        <EntityType Name="Strana">
+          <Key>
+            <PropertyRef Name="ID_Strana" />
+          </Key>
+          <Property Name="ID_Strana" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NazvanieStrany" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="VizovyeReshim" Type="String" MaxLength="11" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Gorod" Relationship="Self.FK_Gorod_Strana" FromRole="Strana" ToRole="Gorod" />
+          <NavigationProperty Name="Tyr" Relationship="Self.FK_Tyr_Strana" FromRole="Strana" ToRole="Tyr" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Transport">
+          <Key>
+            <PropertyRef Name="ID_Transport" />
+          </Key>
+          <Property Name="ID_Transport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TipTransporta" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KolVoMest" Type="Int32" />
+          <Property Name="StoimostArendy" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="BronirovanieTransporta" Relationship="Self.FK_BronirovanieTransporta_Transport" FromRole="Transport" ToRole="BronirovanieTransporta" />
+        </EntityType>
+        <EntityType Name="Tyr">
+          <Key>
+            <PropertyRef Name="ID_Tyra" />
+          </Key>
+          <Property Name="ID_Tyra" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_Sotrydnik" Type="Int32" />
+          <Property Name="ID_Strana" Type="Int32" />
+          <Property Name="Nazvanie" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DataOkonchaniya" Type="DateTime" Precision="0" />
+          <Property Name="DataNachala" Type="DateTime" Precision="0" />
+          <Property Name="Stoimost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ProgrammaTyra" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Dogovor" Relationship="Self.FK_Dogovor_Tyr" FromRole="Tyr" ToRole="Dogovor" />
+          <NavigationProperty Name="Otel" Relationship="Self.FK_Otel_Tyr" FromRole="Tyr" ToRole="Otel" />
+          <NavigationProperty Name="Strana" Relationship="Self.FK_Tyr_Strana" FromRole="Tyr" ToRole="Strana" />
+        </EntityType>
+        <Association Name="FK_BronirovanieExkyrsii_Exskyrsia">
+          <End Role="Exskyrsia" Type="Self.Exskyrsia" Multiplicity="0..1" />
+          <End Role="BronirovanieExkyrsii" Type="Self.BronirovanieExkyrsii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Exskyrsia">
+              <PropertyRef Name="ID_Excyrsii" />
+            </Principal>
+            <Dependent Role="BronirovanieExkyrsii">
+              <PropertyRef Name="ID_Excyrsii" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BronirovanieExkyrsii_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="BronirovanieExkyrsii" Type="Self.BronirovanieExkyrsii" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="ID_Klient" />
+            </Principal>
+            <Dependent Role="BronirovanieExkyrsii">
+              <PropertyRef Name="ID_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BronirovanieTransporta_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="BronirovanieTransporta" Type="Self.BronirovanieTransporta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="ID_Klient" />
+            </Principal>
+            <Dependent Role="BronirovanieTransporta">
+              <PropertyRef Name="ID_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BronirovanieTransporta_Transport">
+          <End Role="Transport" Type="Self.Transport" Multiplicity="0..1" />
+          <End Role="BronirovanieTransporta" Type="Self.BronirovanieTransporta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transport">
+              <PropertyRef Name="ID_Transport" />
+            </Principal>
+            <Dependent Role="BronirovanieTransporta">
+              <PropertyRef Name="ID_Transport" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_Klient">
+          <End Role="Klient" Type="Self.Klient" Multiplicity="0..1" />
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Klient">
+              <PropertyRef Name="ID_Klient" />
+            </Principal>
+            <Dependent Role="Dogovor">
+              <PropertyRef Name="ID_Klient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_Sotrydnik">
+          <End Role="Sotrydnik" Type="Self.Sotrydnik" Multiplicity="0..1" />
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrydnik">
+              <PropertyRef Name="ID_Sotrydnik" />
+            </Principal>
+            <Dependent Role="Dogovor">
+              <PropertyRef Name="ID_Sotrydnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dogovor_Tyr">
+          <End Role="Tyr" Type="Self.Tyr" Multiplicity="0..1" />
+          <End Role="Dogovor" Type="Self.Dogovor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tyr">
+              <PropertyRef Name="ID_Tyra" />
+            </Principal>
+            <Dependent Role="Dogovor">
+              <PropertyRef Name="ID_Tyra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Dolshnost_Sotrydnik">
+          <End Role="Sotrydnik" Type="Self.Sotrydnik" Multiplicity="0..1" />
+          <End Role="Dolshnost" Type="Self.Dolshnost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sotrydnik">
+              <PropertyRef Name="ID_Sotrydnik" />
+            </Principal>
+            <Dependent Role="Dolshnost">
+              <PropertyRef Name="ID_Sotrydnik" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Gorod_Strana">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="0..1" />
+          <End Role="Gorod" Type="Self.Gorod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="ID_Strana" />
+            </Principal>
+            <Dependent Role="Gorod">
+              <PropertyRef Name="ID_Strana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Otel_Tyr">
+          <End Role="Tyr" Type="Self.Tyr" Multiplicity="0..1" />
+          <End Role="Otel" Type="Self.Otel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tyr">
+              <PropertyRef Name="ID_Tyra" />
+            </Principal>
+            <Dependent Role="Otel">
+              <PropertyRef Name="ID_Tyra" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tyr_Strana">
+          <End Role="Strana" Type="Self.Strana" Multiplicity="0..1" />
+          <End Role="Tyr" Type="Self.Tyr" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Strana">
+              <PropertyRef Name="ID_Strana" />
+            </Principal>
+            <Dependent Role="Tyr">
+              <PropertyRef Name="ID_Strana" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BronirovanieExkyrsii" EntityType="Self.BronirovanieExkyrsii" />
+          <EntitySet Name="BronirovanieTransporta" EntityType="Self.BronirovanieTransporta" />
+          <EntitySet Name="Dogovor" EntityType="Self.Dogovor" />
+          <EntitySet Name="Dolshnost" EntityType="Self.Dolshnost" />
+          <EntitySet Name="Exskyrsia" EntityType="Self.Exskyrsia" />
+          <EntitySet Name="Gorod" EntityType="Self.Gorod" />
+          <EntitySet Name="Klient" EntityType="Self.Klient" />
+          <EntitySet Name="Otel" EntityType="Self.Otel" />
+          <EntitySet Name="Sotrydnik" EntityType="Self.Sotrydnik" />
+          <EntitySet Name="Strana" EntityType="Self.Strana" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Transport" EntityType="Self.Transport" />
+          <EntitySet Name="Tyr" EntityType="Self.Tyr" />
+          <AssociationSet Name="FK_BronirovanieExkyrsii_Exskyrsia" Association="Self.FK_BronirovanieExkyrsii_Exskyrsia">
+            <End Role="Exskyrsia" EntitySet="Exskyrsia" />
+            <End Role="BronirovanieExkyrsii" EntitySet="BronirovanieExkyrsii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BronirovanieExkyrsii_Klient" Association="Self.FK_BronirovanieExkyrsii_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="BronirovanieExkyrsii" EntitySet="BronirovanieExkyrsii" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BronirovanieTransporta_Klient" Association="Self.FK_BronirovanieTransporta_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="BronirovanieTransporta" EntitySet="BronirovanieTransporta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BronirovanieTransporta_Transport" Association="Self.FK_BronirovanieTransporta_Transport">
+            <End Role="Transport" EntitySet="Transport" />
+            <End Role="BronirovanieTransporta" EntitySet="BronirovanieTransporta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_Klient" Association="Self.FK_Dogovor_Klient">
+            <End Role="Klient" EntitySet="Klient" />
+            <End Role="Dogovor" EntitySet="Dogovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_Sotrydnik" Association="Self.FK_Dogovor_Sotrydnik">
+            <End Role="Sotrydnik" EntitySet="Sotrydnik" />
+            <End Role="Dogovor" EntitySet="Dogovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dogovor_Tyr" Association="Self.FK_Dogovor_Tyr">
+            <End Role="Tyr" EntitySet="Tyr" />
+            <End Role="Dogovor" EntitySet="Dogovor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Dolshnost_Sotrydnik" Association="Self.FK_Dolshnost_Sotrydnik">
+            <End Role="Sotrydnik" EntitySet="Sotrydnik" />
+            <End Role="Dolshnost" EntitySet="Dolshnost" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Gorod_Strana" Association="Self.FK_Gorod_Strana">
+            <End Role="Strana" EntitySet="Strana" />
+            <End Role="Gorod" EntitySet="Gorod" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Otel_Tyr" Association="Self.FK_Otel_Tyr">
+            <End Role="Tyr" EntitySet="Tyr" />
+            <End Role="Otel" EntitySet="Otel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tyr_Strana" Association="Self.FK_Tyr_Strana">
+            <End Role="Strana" EntitySet="Strana" />
+            <End Role="Tyr" EntitySet="Tyr" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="BronirovanieExkyrsii">
+            <EntityTypeMapping TypeName="Model.BronirovanieExkyrsii">
+              <MappingFragment StoreEntitySet="BronirovanieExkyrsii">
+                <ScalarProperty Name="ID_Broni" ColumnName="ID_Broni" />
+                <ScalarProperty Name="ID_Klient" ColumnName="ID_Klient" />
+                <ScalarProperty Name="ID_Excyrsii" ColumnName="ID_Excyrsii" />
+                <ScalarProperty Name="DataBroni" ColumnName="DataBroni" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BronirovanieTransporta">
+            <EntityTypeMapping TypeName="Model.BronirovanieTransporta">
+              <MappingFragment StoreEntitySet="BronirovanieTransporta">
+                <ScalarProperty Name="ID_BroniTransporta" ColumnName="ID_BroniTransporta" />
+                <ScalarProperty Name="ID_Klient" ColumnName="ID_Klient" />
+                <ScalarProperty Name="ID_Transport" ColumnName="ID_Transport" />
+                <ScalarProperty Name="DataArendy" ColumnName="DataArendy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dogovor">
+            <EntityTypeMapping TypeName="Model.Dogovor">
+              <MappingFragment StoreEntitySet="Dogovor">
+                <ScalarProperty Name="ID_Dogovor" ColumnName="ID_Dogovor" />
+                <ScalarProperty Name="ID_Sotrydnik" ColumnName="ID_Sotrydnik" />
+                <ScalarProperty Name="ID_Klient" ColumnName="ID_Klient" />
+                <ScalarProperty Name="ID_Tyra" ColumnName="ID_Tyra" />
+                <ScalarProperty Name="DataZaklycheniya" ColumnName="DataZaklycheniya" />
+                <ScalarProperty Name="DataDeistvtya" ColumnName="DataDeistvtya" />
+                <ScalarProperty Name="SpisokYslyg" ColumnName="SpisokYslyg" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Dolshnost">
+            <EntityTypeMapping TypeName="Model.Dolshnost">
+              <MappingFragment StoreEntitySet="Dolshnost">
+                <ScalarProperty Name="ID_Dolshost" ColumnName="ID_Dolshost" />
+                <ScalarProperty Name="ID_Sotrydnik" ColumnName="ID_Sotrydnik" />
+                <ScalarProperty Name="NazvanieDolshosti" ColumnName="NazvanieDolshosti" />
+                <ScalarProperty Name="Zarplata" ColumnName="Zarplata" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exskyrsia">
+            <EntityTypeMapping TypeName="Model.Exskyrsia">
+              <MappingFragment StoreEntitySet="Exskyrsia">
+                <ScalarProperty Name="ID_Excyrsii" ColumnName="ID_Excyrsii" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+                <ScalarProperty Name="Stoimost" ColumnName="Stoimost" />
+                <ScalarProperty Name="DataExskyrsii" ColumnName="DataExskyrsii" />
+                <ScalarProperty Name="Dlitelnost" ColumnName="Dlitelnost" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gorod">
+            <EntityTypeMapping TypeName="Model.Gorod">
+              <MappingFragment StoreEntitySet="Gorod">
+                <ScalarProperty Name="ID_Gorod" ColumnName="ID_Gorod" />
+                <ScalarProperty Name="ID_Strana" ColumnName="ID_Strana" />
+                <ScalarProperty Name="NazvanieGoroda" ColumnName="NazvanieGoroda" />
+                <ScalarProperty Name="OpisanieGoroda" ColumnName="OpisanieGoroda" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Klient">
+            <EntityTypeMapping TypeName="Model.Klient">
+              <MappingFragment StoreEntitySet="Klient">
+                <ScalarProperty Name="ID_Klient" ColumnName="ID_Klient" />
+                <ScalarProperty Name="Familiya" ColumnName="Familiya" />
+                <ScalarProperty Name="Imya" ColumnName="Imya" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="DataRozdeniya" ColumnName="DataRozdeniya" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="PassportnyeDannye" ColumnName="PassportnyeDannye" />
+                <ScalarProperty Name="Viza" ColumnName="Viza" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Otel">
+            <EntityTypeMapping TypeName="Model.Otel">
+              <MappingFragment StoreEntitySet="Otel">
+                <ScalarProperty Name="ID_Otel" ColumnName="ID_Otel" />
+                <ScalarProperty Name="ID_Tyra" ColumnName="ID_Tyra" />
+                <ScalarProperty Name="NazvanieOtelya" ColumnName="NazvanieOtelya" />
+                <ScalarProperty Name="KolVoZvezd" ColumnName="KolVoZvezd" />
+                <ScalarProperty Name="OpisanieOtelya" ColumnName="OpisanieOtelya" />
+                <ScalarProperty Name="ChenaZaNoch" ColumnName="ChenaZaNoch" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sotrydnik">
+            <EntityTypeMapping TypeName="Model.Sotrydnik">
+              <MappingFragment StoreEntitySet="Sotrydnik">
+                <ScalarProperty Name="ID_Sotrydnik" ColumnName="ID_Sotrydnik" />
+                <ScalarProperty Name="Familiya" ColumnName="Familiya" />
+                <ScalarProperty Name="Imya" ColumnName="Imya" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="DataRozdeniya" ColumnName="DataRozdeniya" />
+                <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+                <ScalarProperty Name="PassportnyeDannye" ColumnName="PassportnyeDannye" />
+                <ScalarProperty Name="DataPrinyatiaNaRaboty" ColumnName="DataPrinyatiaNaRaboty" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Strana">
+            <EntityTypeMapping TypeName="Model.Strana">
+              <MappingFragment StoreEntitySet="Strana">
+                <ScalarProperty Name="ID_Strana" ColumnName="ID_Strana" />
+                <ScalarProperty Name="NazvanieStrany" ColumnName="NazvanieStrany" />
+                <ScalarProperty Name="VizovyeReshim" ColumnName="VizovyeReshim" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transport">
+            <EntityTypeMapping TypeName="Model.Transport">
+              <MappingFragment StoreEntitySet="Transport">
+                <ScalarProperty Name="ID_Transport" ColumnName="ID_Transport" />
+                <ScalarProperty Name="TipTransporta" ColumnName="TipTransporta" />
+                <ScalarProperty Name="KolVoMest" ColumnName="KolVoMest" />
+                <ScalarProperty Name="StoimostArendy" ColumnName="StoimostArendy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tyr">
+            <EntityTypeMapping TypeName="Model.Tyr">
+              <MappingFragment StoreEntitySet="Tyr">
+                <ScalarProperty Name="ID_Tyra" ColumnName="ID_Tyra" />
+                <ScalarProperty Name="ID_Sotrydnik" ColumnName="ID_Sotrydnik" />
+                <ScalarProperty Name="ID_Strana" ColumnName="ID_Strana" />
+                <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+                <ScalarProperty Name="DataOkonchaniya" ColumnName="DataOkonchaniya" />
+                <ScalarProperty Name="DataNachala" ColumnName="DataNachala" />
+                <ScalarProperty Name="Stoimost" ColumnName="Stoimost" />
+                <ScalarProperty Name="ProgrammaTyra" ColumnName="ProgrammaTyra" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

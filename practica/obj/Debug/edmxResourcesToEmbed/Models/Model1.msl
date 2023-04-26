@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="BronirovanieExkyrsii">
+      <EntityTypeMapping TypeName="Model.BronirovanieExkyrsii">
+        <MappingFragment StoreEntitySet="BronirovanieExkyrsii">
+          <ScalarProperty Name="ID_Broni" ColumnName="ID_Broni" />
+          <ScalarProperty Name="ID_Klient" ColumnName="ID_Klient" />
+          <ScalarProperty Name="ID_Excyrsii" ColumnName="ID_Excyrsii" />
+          <ScalarProperty Name="DataBroni" ColumnName="DataBroni" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BronirovanieTransporta">
+      <EntityTypeMapping TypeName="Model.BronirovanieTransporta">
+        <MappingFragment StoreEntitySet="BronirovanieTransporta">
+          <ScalarProperty Name="ID_BroniTransporta" ColumnName="ID_BroniTransporta" />
+          <ScalarProperty Name="ID_Klient" ColumnName="ID_Klient" />
+          <ScalarProperty Name="ID_Transport" ColumnName="ID_Transport" />
+          <ScalarProperty Name="DataArendy" ColumnName="DataArendy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dogovor">
+      <EntityTypeMapping TypeName="Model.Dogovor">
+        <MappingFragment StoreEntitySet="Dogovor">
+          <ScalarProperty Name="ID_Dogovor" ColumnName="ID_Dogovor" />
+          <ScalarProperty Name="ID_Sotrydnik" ColumnName="ID_Sotrydnik" />
+          <ScalarProperty Name="ID_Klient" ColumnName="ID_Klient" />
+          <ScalarProperty Name="ID_Tyra" ColumnName="ID_Tyra" />
+          <ScalarProperty Name="DataZaklycheniya" ColumnName="DataZaklycheniya" />
+          <ScalarProperty Name="DataDeistvtya" ColumnName="DataDeistvtya" />
+          <ScalarProperty Name="SpisokYslyg" ColumnName="SpisokYslyg" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Dolshnost">
+      <EntityTypeMapping TypeName="Model.Dolshnost">
+        <MappingFragment StoreEntitySet="Dolshnost">
+          <ScalarProperty Name="ID_Dolshost" ColumnName="ID_Dolshost" />
+          <ScalarProperty Name="ID_Sotrydnik" ColumnName="ID_Sotrydnik" />
+          <ScalarProperty Name="NazvanieDolshosti" ColumnName="NazvanieDolshosti" />
+          <ScalarProperty Name="Zarplata" ColumnName="Zarplata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exskyrsia">
+      <EntityTypeMapping TypeName="Model.Exskyrsia">
+        <MappingFragment StoreEntitySet="Exskyrsia">
+          <ScalarProperty Name="ID_Excyrsii" ColumnName="ID_Excyrsii" />
+          <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+          <ScalarProperty Name="Opisanie" ColumnName="Opisanie" />
+          <ScalarProperty Name="Stoimost" ColumnName="Stoimost" />
+          <ScalarProperty Name="DataExskyrsii" ColumnName="DataExskyrsii" />
+          <ScalarProperty Name="Dlitelnost" ColumnName="Dlitelnost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gorod">
+      <EntityTypeMapping TypeName="Model.Gorod">
+        <MappingFragment StoreEntitySet="Gorod">
+          <ScalarProperty Name="ID_Gorod" ColumnName="ID_Gorod" />
+          <ScalarProperty Name="ID_Strana" ColumnName="ID_Strana" />
+          <ScalarProperty Name="NazvanieGoroda" ColumnName="NazvanieGoroda" />
+          <ScalarProperty Name="OpisanieGoroda" ColumnName="OpisanieGoroda" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Klient">
+      <EntityTypeMapping TypeName="Model.Klient">
+        <MappingFragment StoreEntitySet="Klient">
+          <ScalarProperty Name="ID_Klient" ColumnName="ID_Klient" />
+          <ScalarProperty Name="Familiya" ColumnName="Familiya" />
+          <ScalarProperty Name="Imya" ColumnName="Imya" />
+          <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+          <ScalarProperty Name="DataRozdeniya" ColumnName="DataRozdeniya" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="PassportnyeDannye" ColumnName="PassportnyeDannye" />
+          <ScalarProperty Name="Viza" ColumnName="Viza" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otel">
+      <EntityTypeMapping TypeName="Model.Otel">
+        <MappingFragment StoreEntitySet="Otel">
+          <ScalarProperty Name="ID_Otel" ColumnName="ID_Otel" />
+          <ScalarProperty Name="ID_Tyra" ColumnName="ID_Tyra" />
+          <ScalarProperty Name="NazvanieOtelya" ColumnName="NazvanieOtelya" />
+          <ScalarProperty Name="KolVoZvezd" ColumnName="KolVoZvezd" />
+          <ScalarProperty Name="OpisanieOtelya" ColumnName="OpisanieOtelya" />
+          <ScalarProperty Name="ChenaZaNoch" ColumnName="ChenaZaNoch" />
+          <ScalarProperty Name="Adress" ColumnName="Adress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sotrydnik">
+      <EntityTypeMapping TypeName="Model.Sotrydnik">
+        <MappingFragment StoreEntitySet="Sotrydnik">
+          <ScalarProperty Name="ID_Sotrydnik" ColumnName="ID_Sotrydnik" />
+          <ScalarProperty Name="Familiya" ColumnName="Familiya" />
+          <ScalarProperty Name="Imya" ColumnName="Imya" />
+          <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+          <ScalarProperty Name="DataRozdeniya" ColumnName="DataRozdeniya" />
+          <ScalarProperty Name="Telefon" ColumnName="Telefon" />
+          <ScalarProperty Name="PassportnyeDannye" ColumnName="PassportnyeDannye" />
+          <ScalarProperty Name="DataPrinyatiaNaRaboty" ColumnName="DataPrinyatiaNaRaboty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Strana">
+      <EntityTypeMapping TypeName="Model.Strana">
+        <MappingFragment StoreEntitySet="Strana">
+          <ScalarProperty Name="ID_Strana" ColumnName="ID_Strana" />
+          <ScalarProperty Name="NazvanieStrany" ColumnName="NazvanieStrany" />
+          <ScalarProperty Name="VizovyeReshim" ColumnName="VizovyeReshim" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transport">
+      <EntityTypeMapping TypeName="Model.Transport">
+        <MappingFragment StoreEntitySet="Transport">
+          <ScalarProperty Name="ID_Transport" ColumnName="ID_Transport" />
+          <ScalarProperty Name="TipTransporta" ColumnName="TipTransporta" />
+          <ScalarProperty Name="KolVoMest" ColumnName="KolVoMest" />
+          <ScalarProperty Name="StoimostArendy" ColumnName="StoimostArendy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tyr">
+      <EntityTypeMapping TypeName="Model.Tyr">
+        <MappingFragment StoreEntitySet="Tyr">
+          <ScalarProperty Name="ID_Tyra" ColumnName="ID_Tyra" />
+          <ScalarProperty Name="ID_Sotrydnik" ColumnName="ID_Sotrydnik" />
+          <ScalarProperty Name="ID_Strana" ColumnName="ID_Strana" />
+          <ScalarProperty Name="Nazvanie" ColumnName="Nazvanie" />
+          <ScalarProperty Name="DataOkonchaniya" ColumnName="DataOkonchaniya" />
+          <ScalarProperty Name="DataNachala" ColumnName="DataNachala" />
+          <ScalarProperty Name="Stoimost" ColumnName="Stoimost" />
+          <ScalarProperty Name="ProgrammaTyra" ColumnName="ProgrammaTyra" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
